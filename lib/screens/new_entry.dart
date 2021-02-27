@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
 import 'welcome.dart';
 
+class JournalEntryFields {
+  String title;
+  String body;
+  int rating;
+  String toString() {
+    return 'Title: $title, Body: $body, Rating: $rating';
+  }
+}
+
+
 class NewEntryScreen extends StatefulWidget {
 
   static const routeName = 'newEntry';
@@ -11,6 +21,8 @@ class NewEntryScreen extends StatefulWidget {
 
 class _NewEntryScreenState extends State<NewEntryScreen> {
 
+  final formKey = GlobalKey<FormState>();
+  final journalEntryFields = JournalEntryFields();
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +32,17 @@ class _NewEntryScreenState extends State<NewEntryScreen> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            textPlaceholder(context),
+            Form(
+                key: formKey,
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column( 
+                    children: formFields(context),
+                  )
+                ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -53,4 +73,29 @@ Widget saveButton(BuildContext context) {
     child: Text('Save', style: Theme.of(context).textTheme.headline6),
     onPressed: null,
   );
+}
+
+List<Widget> formFields(BuildContext context) {
+  return [
+    TextFormField(
+      autofocus: true,
+      decoration: InputDecoration(
+        labelText: 'Title', border: OutlineInputBorder()),
+      validator: null,
+    ),
+    SizedBox(height: 10),
+    TextFormField(
+      autofocus: true,
+      decoration: InputDecoration(
+        labelText: 'Body', border: OutlineInputBorder()),
+      validator: null,
+    ),
+    SizedBox(height: 10),
+    TextFormField(
+      autofocus: true,
+      decoration: InputDecoration(
+        labelText: 'Rating', border: OutlineInputBorder()),
+      validator: null,
+    ),
+  ];
 }
