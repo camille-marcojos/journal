@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-
+import 'new_entry.dart';
 
 class WelcomeScreen extends StatelessWidget {
 
@@ -14,8 +14,6 @@ class WelcomeScreen extends StatelessWidget {
         title: Text(title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -25,7 +23,7 @@ class WelcomeScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: null,//() => pushAddJournalEntry(context),
+        onPressed: () => pushAddJournalEntry(context),
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
@@ -45,6 +43,6 @@ Widget textPlaceholder(BuildContext context) {
     child: Text('Journal', style: Theme.of(context).textTheme.headline6));
 }
 
-// pushAddJournalEntry(BuildContext context) {
-//   Navigator.of(context).pushNamed(NewEntry.routeName);
-// }
+void pushAddJournalEntry(BuildContext context) {
+  Navigator.of(context).pushNamed(NewEntryScreen.routeName);
+}

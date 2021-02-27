@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/welcome.dart';
+import 'screens/new_entry.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,6 +12,7 @@ class MyApp extends StatelessWidget {
 
   static final routes = {
     WelcomeScreen.routeName: (context) => WelcomeScreen(),
+    NewEntryScreen.routeName: (context) => NewEntryScreen()
   };
 
   @override
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData( primarySwatch: Colors.blue
       ),
-      home: WelcomeScreen(),
+      routes: routes,
     );
   }
 }
