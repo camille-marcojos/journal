@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:journal/screens/journal_entry_list.dart';
 import 'screens/welcome.dart';
 import 'screens/new_entry.dart';
 
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
   static final routes = {
     WelcomeScreen.routeName: (context) => WelcomeScreen(),
     NewEntryScreen.routeName: (context) => NewEntryScreen()
+    EntriesListScreen.routeName: (context) =>
   };
 
   @override
