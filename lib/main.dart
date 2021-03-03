@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:journal/screens/journal_entry_list.dart';
 import 'screens/welcome.dart';
 import 'screens/new_entry.dart';
+import 'screens/journal_entry_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,8 +14,8 @@ class MyApp extends StatelessWidget {
 
   static final routes = {
     WelcomeScreen.routeName: (context) => WelcomeScreen(),
-    NewEntryScreen.routeName: (context) => NewEntryScreen()
-    EntriesListScreen.routeName: (context) =>
+    NewEntryScreen.routeName: (context) => NewEntryScreen(),
+    EntriesListScreen.routeName: (context) => EntriesListScreen(),
   };
 
   @override
