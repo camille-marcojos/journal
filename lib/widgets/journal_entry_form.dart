@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../screens/journal_entry_list.dart';
+import 'package:sqflite/sqflite.dart';
 
 class JournalEntryFields {
   String title;
   String body;
   int rating;
+  DateTime date;
   String toString() {
-    return 'Title: $title, Body: $body, Rating: $rating';
+    return 'Title: $title, Body: $body, Rating: $rating, Date: $date';
   }
 }
 
@@ -128,15 +130,30 @@ class _JournalEntryFormState extends State<JournalEntryForm> {
       return null;
   }
 
-  void validateAndSignIn(BuildContext context) {
+  void validateAndSignIn(BuildContext context) async {
     final formState = formKey.currentState;
     if(formState.validate()) {
       print('Logging you in...');
       formKey.currentState.save();
+      addDateToJournalEntryValues();
+      await deleteDatabase('journal.sqlite3.db');
+      //print({journalEntryFields});
+      final Database database = await openDatabase('journal.sqlite3.db', version: 1, onCreate: (Database db, int version) async {
+        await db.execute('CREATE TABLE IF NOT EXISTS journal_entries(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, body TEXT NOT NULL, rating INTEGER NOT NULL, date TEXT NOT NULL)');
+      });
+      await database.transaction((txn) async {
+        await txn.rawInsert('INSERT INTO journal_entries(title, body, rating, date) VALUES(?,?,?,?)',[journalEntryFields.title,journalEntryFields.body,journalEntryFields.rating,journalEntryFields.date.toString()]);
+      });
+      var db = await openDatabase('journal.sqlite3.db');
+      await db.close();
       //Database.of(context).saveJournalEntry(journalEntryFields);
-      //Navigator.of(context).pop();
-      Navigator.of(context).pushNamed(EntriesListScreen.routeName);
+      Navigator.of(context).pop();
+      //Navigator.of(context).pushNamed(EntriesListScreen.routeName);
     }
+  }
+
+  void addDateToJournalEntryValues() {
+    journalEntryFields.date = DateTime.now();
   }
   
 }

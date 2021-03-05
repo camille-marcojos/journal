@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/journal_scaffold.dart';
 import 'journal_entry.dart';
+import 'package:sqflite/sqflite.dart';
 
 class EntriesListScreen extends StatelessWidget {
 
@@ -20,7 +21,6 @@ class EntriesListScreen extends StatelessWidget {
         child: ListView.builder(itemBuilder: (context, index) {
           print('Creating item $index');
           return ListTile( 
-            leading: FlutterLogo(),
             trailing: Icon(Icons.more_horiz),
             title: Text('Journal Entry ${items[index]['title']}'),
             subtitle: Text('Example ${items[index]['subtitle']}'),

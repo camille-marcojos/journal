@@ -13,3 +13,4 @@ class _JournalEntryState extends State<JournalEntry> {
     );
   }
 }
+
