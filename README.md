@@ -1,16 +1,6 @@
 # journal
 
-A new Flutter project.
+A program that models a journal, enabling users to create journal entries, which have a title, body, date and rating. You could use this to log good and bad days, favorite coffee shops, beverages, anime episodes, pair-programming dates - you get the idea. Applies the concepts of navigation, forms, lists and data persistence. Enhance your application with adaptivity, dynamic theme switching, third-party packages for persistence, and encounter challenges of state management.
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+CS 492 Mobile Development 
